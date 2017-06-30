@@ -1,6 +1,6 @@
 discord.py ~= 0.16.5
 pip
 youtube_dl
-pynacl
+simplejson
 google-api-python-client
 cffi==1.6.0; sys_platform == 'win32'
