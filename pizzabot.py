@@ -89,7 +89,7 @@ async def order(ctx, *, msgstr=None):
   message = ctx.message
   author = message.author
   msgstr += " pizza"
-  await response(message,"Order Received!","{0.mention}, Your order has been recived by the bot. Please wait for {1} for your pizza to be prepared.".format(author,display_time(preperationtime)))
+  await response(message,"Order Received!","{0.mention}, Your order has been received by the bot. Please wait for {1} for your pizza to be prepared.".format(author,display_time(preperationtime)))
   await asyncio.sleep(preperationtime)
   await response(message,"Cooking Started!","{0.mention}, Your pizza is now in the oven! Please wait for {1} for your pizza to be cooked.".format(author,display_time(cooktime)))
   await asyncio.sleep(cooktime)
@@ -107,8 +107,8 @@ async def order(ctx, *, msgstr=None):
   if not 'items' in res:
      await response(message,"Order Error","Sorry {0.mention}, but the delivery guy {1} while trying to deliver your pizza. sorry about that.".format(author, random.choice(events)))
   else:
-     for item in res['items']:
-       await response_ex(message,"Your pizza is here, enjoy!","{0.mention}, your pizza is here, enjoy!".format(author),item['link'])
+     randnum = random.randrange(0,len(res['items']))
+     await response_ex(message,"Your pizza is here, enjoy!","{0.mention}, your pizza is here, enjoy!".format(author),randnum['link'])
 	   
 @bot.command(pass_context=True, no_pm=True)
 async def refund(ctx):
