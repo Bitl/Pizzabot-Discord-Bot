@@ -93,7 +93,7 @@ async def order(ctx, *, msgstr=None):
   await asyncio.sleep(preperationtime)
   await response(message,"Cooking Started!","{0.mention}, Your pizza is now in the oven! Please wait for {1} for your pizza to be cooked.".format(author,display_time(cooktime)))
   await asyncio.sleep(cooktime)
-  await response(message,"Delivering Pizza!","{0.mention}, Your pizza is now being delevered to you! Please wait for {1} for your pizza to be delivered.".format(author,display_time(delivertime)))
+  await response(message,"Delivering Pizza!","{0.mention}, Your pizza is now being delivered to you! Please wait for {1} for your pizza to be delivered.".format(author,display_time(delivertime)))
   await asyncio.sleep(delivertime)
   apikey = open('apikey.txt', 'r')
   key = apikey.readline()
@@ -107,8 +107,8 @@ async def order(ctx, *, msgstr=None):
   if not 'items' in res:
      await response(message,"Order Error","Sorry {0.mention}, but the delivery guy {1} while trying to deliver your pizza. sorry about that.".format(author, random.choice(events)))
   else:
-     randnum = random.randrange(0,len(res['items']))
-     await response_ex(message,"Your pizza is here, enjoy!","{0.mention}, your pizza is here, enjoy!".format(author),randnum['link'])
+     for item in res['items']:
+       await response_ex(message,"Your pizza is here, enjoy!","{0.mention}, your pizza is here, enjoy!".format(author),item['link'])
 	   
 @bot.command(pass_context=True, no_pm=True)
 async def refund(ctx):
