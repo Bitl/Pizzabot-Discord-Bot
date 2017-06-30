@@ -41,7 +41,7 @@ aiosession = aiohttp.ClientSession(loop=bot.loop)
 
 owner_list = ["184013824850919425", "226441820467494914"]
 
-events = ["was robbed by a angry mob","was taken to jail for taking illegal drugs","was taken to jail for murdering a guy.","was too busy being in his house playing games","was fired","was killed","had to go to the hospital for a life-threatening condition","was murdered by a shotgunner at point blank"]
+events = ["was robbed by an angry mob","was taken to jail for taking illegal drugs","was taken to jail for murdering a guy","was too busy being in his house playing games","was fired","had to go to the hospital for a life-threatening condition","was murdered by a shotgunner at point blank","was dragged into a top secret FBI operation","accidentally fell over a cliff", "got eaten by a colossal creature", "got mollested by a zombie horde", "got chewed down by a zombie horde", "realized your pizza had bones in it", "mauled by a bear", "attacked by a homeless man on bath salts"]
 
 config = {}
    
