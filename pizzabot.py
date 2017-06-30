@@ -100,7 +100,7 @@ async def order(ctx, *, msgstr=None):
   cxid.close()
   service = build("customsearch", "v1",developerKey=key)
 
-  res = service.cse().list(q=msgstr,cx=id,searchType='image',num=1,imgType='photo',fileType='png',safe= 'off').execute()
+  res = service.cse().list(q=msgstr+" pizza",cx=id,searchType='image',num=1,imgType='photo',fileType='png',safe= 'off').execute()
  
   if not 'items' in res:
      await response(message,"Order Error","Search result not found.\n{0}".format(res))
