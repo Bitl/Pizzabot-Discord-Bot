@@ -112,6 +112,7 @@ async def order(ctx, *, msgstr=None):
 async def refund(ctx):
   """Pizza - Refunds an order"""
   message = ctx.message
+  author = message.author
   await response(message,"No Refunds","Sorry {0.mention}, there are no refunds. :(".format(author))
   
 @bot.command(pass_context=True, no_pm=True)
