@@ -136,6 +136,12 @@ async def avatar(ctx, url=None):
                  await response(message, "Avatar", "Avatar Changed.")
         except Exception as e:
            await response(message, "Avatar", "Unable to change avatar.")
+		   
+@bot.command(pass_context=True, no_pm=True)
+async def invite(ctx, url=None):
+  """Utility - Invites the bot to your server."""
+  message = ctx.message
+  await response(message,"Invite Link",'https://discordapp.com/api/oauth2/authorize?client_id=' + bot.user.id + '&scope=bot&permissions=0')
   
 async def response(message, mtitle, content):
   await bot.send_typing(message.channel)
