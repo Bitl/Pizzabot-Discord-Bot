@@ -88,12 +88,16 @@ async def order(ctx, *, msgstr=None):
   """Pizza - Orders a pizza."""
   message = ctx.message
   author = message.author
+  channel = message.channel
   msgstr += " pizza"
-  await response(message,"Order Received!","{0.mention}, Your order has been received by the bot. Please wait for {1} for your pizza to be prepared.".format(author,display_time(preperationtime)))
+  await bot.send_message(channel, "{0.mention}".format(author))
+  await response(message,"Order Received!","{0.name}, Your order has been received by the bot. Please wait for {1} for your pizza to be prepared.".format(author,display_time(preperationtime)))
   await asyncio.sleep(preperationtime)
-  await response(message,"Cooking Started!","{0.mention}, Your pizza is now in the oven! Please wait for {1} for your pizza to be cooked.".format(author,display_time(cooktime)))
+  await bot.send_message(channel, "{0.mention}".format(author))
+  await response(message,"Cooking Started!","{0.name}, Your pizza is now in the oven! Please wait for {1} for your pizza to be cooked.".format(author,display_time(cooktime)))
   await asyncio.sleep(cooktime)
-  await response(message,"Delivering Pizza!","{0.mention}, Your pizza is now being delivered to you! Please wait for {1} for your pizza to be delivered.".format(author,display_time(delivertime)))
+  await bot.send_message(channel, "{0.mention}".format(author))
+  await response(message,"Delivering Pizza!","{0.name}, Your pizza is now being delivered to you! Please wait for {1} for your pizza to be delivered.".format(author,display_time(delivertime)))
   await asyncio.sleep(delivertime)
   apikey = open('apikey.txt', 'r')
   key = apikey.readline()
@@ -105,10 +109,12 @@ async def order(ctx, *, msgstr=None):
   res = service.cse().list(q=msgstr,cx=id,searchType='image',num=1,imgType='photo',fileType='png',safe= 'off').execute()
  
   if not 'items' in res:
-     await response(message,"Order Error","Sorry {0.mention}, but the delivery guy {1} while trying to deliver your pizza. sorry about that.".format(author, random.choice(events)))
+     await bot.send_message(channel, "{0.mention}".format(author))
+     await response(message,"Order Error","Sorry {0.name}, but the delivery guy {1} while trying to deliver your pizza. sorry about that.".format(author, random.choice(events)))
   else:
      for item in res['items']:
-       await response_ex(message,"Your pizza is here, enjoy!","{0.mention}, your pizza is here, enjoy!".format(author),item['link'])
+       await bot.send_message(channel, "{0.mention}".format(author))
+       await response_ex(message,"Your pizza is here, enjoy!","{0.name}, your pizza is here, enjoy!".format(author),item['link'])
 	   
 @bot.command(pass_context=True, no_pm=True)
 async def refund(ctx):
