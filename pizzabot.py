@@ -39,7 +39,7 @@ logger3.debug("Pizzabot Loading...")
 bot = commands.Bot(command_prefix="(>", description="lemme order a number 9...")
 aiosession = aiohttp.ClientSession(loop=bot.loop)
 
-owner_list = ["184013824850919425", "226441820467494914"]
+owner_list = ["184013824850919425"]
 
 events = ["was robbed by an angry mob","was taken to jail for taking illegal drugs","was taken to jail for murdering a guy",
 "was too busy being in his house playing games","was fired","had to go to the hospital for a life-threatening condition",
