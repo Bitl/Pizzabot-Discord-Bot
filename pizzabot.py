@@ -47,15 +47,6 @@ events = ["was robbed by an angry mob","was taken to jail for taking illegal dru
 "got eaten by a colossal creature", "got mollested by a zombie horde", "got chewed down by a zombie horde", "realized your pizza had bones in it", 
 "mauled by a bear", "attacked by a homeless man on bath salts"]
 
-#game list. for fun.
-game_list = ["Team Fortress 2", "Garry's Mod", "Portal", "Portal 2", "Left 4 Dead", "Left 4 Dead 2", "Half-Life 2", "Half-Life", "Counter-Strike: Global Offensive", 
-"BioShock Infinite", "BioShock", "BioShock 2", "Killing Floor", "Killing Floor 2", "Borderlands", "Borderlands 2", "Fallout 3", "Fallout New Vegas", "Fallout 4", "DOOM", 
-"Wolfenstein: The New Order", "Wolfenstein: The Old Blood", "The Ultimate DOOM", "DOOM II", "Final DOOM", "Quake", "Quake II", "Quake III Arena", "Wolfenstein 3D",
-"Quake Live", "Synergy", "Terraria", "Minecraft", "ROBLOX", "Spore", "System Shock 2", "Duke Nukem 3D", "POSTAL 2", "Shadow Warrior", "Shadow Warrior 2", "Shadow Warrior Classic",
-"Counter-Strike", "Counter-Strike Source", "Serious Sam: The First Encounter", "Serious Sam: The Second Encounter", "Serious Sam 3: BFE", "Pong", "Tetris", "Super Mario Bros.",
-"Pac-Man", "Mrs. Pac-Man", "Sonic the Hedgehog", "Reflex Arena", "Overwatch", "League Of Legends", "Dota 2", "Halo Combat Evolved", "Halo Custom Edition", "Halo Online", 
-"ElDewrito", "Team Fortress 2 Classic", "Synergy", "FIREFIGHT RELOADED", "Unreal Tournament", "GZDOOM", "ZDOOM", "GLQuake", "WinQuake", "Spacewar!"]
-
 config = {}
    
 with open('config.json') as json_config_file:
@@ -86,16 +77,7 @@ async def on_ready():
   print('To invite to your server use')
   print('https://discordapp.com/api/oauth2/authorize?client_id=' + bot.user.id + '&scope=bot&permissions=0')
   print('---------')
-  bot.loop.create_task(change_game())
-  
-async def change_game():
-  await bot.wait_until_ready()
-  while not bot.is_closed:
-    chosen_game = random.choice(game_list)
-    logger.debug("Now Playing:")
-    logger.debug(chosen_game)
-    await bot.change_presence(game=discord.Game(name=chosen_game))
-    await asyncio.sleep(1800)
+  await bot.change_presence(game=discord.Game(name="Open 24/7!"))
 
 #event on message.
 @bot.event
